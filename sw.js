@@ -116,10 +116,10 @@ self.addEventListener("fetch", (event) => {
             }),
         );
     } else {
-        evt.respondWith(
-            fromNetwork(evt.request, 10000).catch(() => fromCache(evt.request))
+        event.respondWith(
+            fromNetwork(evt.request, 10000).catch(() => fromCache(event.request))
         );
-        evt.waitUntil(update(evt.request));
+        event.waitUntil(update(evt.request));
     }
 
 

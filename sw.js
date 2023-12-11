@@ -63,14 +63,14 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("install", (event) => {
     event.waitUntil(
         addResourcesToCache([
-            "/index.html",
-            "/index.js",
-            "/categories.js",
-            "/categories.html",
-            "/categoryList.js",
-            "/categoryList.html",
-            "/categories.html?category=food",
-            "/categories.html?category=movie",
+            "/pwa-demo/index.html",
+            "/pwa-demo/index.js",
+            "/pwa-demo/categories.js",
+            "/pwa-demo/categories.html",
+            "/pwa-demo/categoryList.js",
+            "/pwa-demo/categoryList.html",
+            "/pwa-demo/categories.html?category=food",
+            "/pwa-demo/categories.html?category=movie",
         ]),
         fetch('https://api.chucknorris.io/jokes/random?category=movie')
             .then(response => putInCache('https://api.chucknorris.io/jokes/random?category=movie', response.clone()))

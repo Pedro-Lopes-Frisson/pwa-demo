@@ -107,12 +107,12 @@ const fromNetwork = (request, timeout) =>
     });
 
 self.addEventListener("fetch", (event) => {
-    if (event.request.includes("js") || event.request.includes("css")) {
+    if (event.request.url.includes("js") || event.request.url.includes("css")) {
         event.respondWith(
             cacheFirst({
                 request: event.request,
                 preloadResponsePromise: event.preloadResponse,
-                fallbackUrl: "/images/windows/SplashScreen.scale-400.png",
+                fallbackUrl: "/pwa-demo/images/windows/SplashScreen.scale-400.png",
             }),
         );
     } else {

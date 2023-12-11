@@ -91,7 +91,7 @@ self.addEventListener("install", (event) => {
 });
 const update = request =>
     caches
-        .open(CURRENT_CACHE)
+        .open(CACHE_VERSION)
         .then(cache =>
             fetch(request).then(response => cache.put(request, response))
         );
@@ -109,7 +109,7 @@ const fromNetwork = (request, timeout) =>
 
 const fromCache = request =>
   caches
-    .open(CURRENT_CACHE)
+    .open(CACHE_VERSION)
     .then(cache =>
       cache
         .match(request)
@@ -129,7 +129,7 @@ self.addEventListener("fetch", (event) => {
         event.respondWith(
             fromNetwork(event.request, 10000).catch(() => fromCache(event.request))
         );
-        event.waitUntil(update(evt.request));
+        event.waitUntil(update(event.request));
     }
 
 

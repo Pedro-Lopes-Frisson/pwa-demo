@@ -122,7 +122,7 @@ self.addEventListener("fetch", (event) => {
             cacheFirst({
                 request: event.request,
                 preloadResponsePromise: event.preloadResponse,
-                fallbackUrl: "/pwa-demo/images/windows/SplashScreen.scale-400.png",
+                fallbackUrl: "https://raw.githubusercontent.com/Pedro-Lopes-Frisson/pwa-demo/master/images/windows/SplashScreen.scale-400.png",
             }),
         );
     } else {

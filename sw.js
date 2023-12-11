@@ -106,6 +106,16 @@ const fromNetwork = (request, timeout) =>
         }, reject);
     });
 
+
+const fromCache = request =>
+  caches
+    .open(CURRENT_CACHE)
+    .then(cache =>
+      cache
+        .match(request)
+        .then(matching => matching || cache.match('/pwa-demo/offline/'))
+    );
+
 self.addEventListener("fetch", (event) => {
     if (event.request.url.includes("js") || event.request.url.includes("css")) {
         event.respondWith(
